@@ -16,3 +16,11 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+
+cd package
+
+#国内常用OpenWrt软件包源码合集
+git clone https://github.com/liuran001/openwrt-packages
+
+#luci-app-pushbot 全能推送
+git clone https://github.com/zzsj0928/luci-app-pushbot

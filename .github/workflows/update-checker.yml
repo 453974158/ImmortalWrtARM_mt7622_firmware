@@ -9,11 +9,11 @@
 # Description: Source code update checker
 #
 
-name: Update Checker
+名字: Update Checker
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrtARM
-  REPO_BRANCH: mt7622
+  REPO_URL: https://github.com/padavanonly/immortalwrt
+  REPO_BRANCH: master
 
 on:
   workflow_dispatch:
@@ -26,32 +26,32 @@ jobs:
 
     steps:
 
-    - name: Get Commit Hash
+    - 名字: Get Commit Hash
       id: getHash
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH .
         echo "::set-output name=commitHash::$(git rev-parse HEAD)"
 
-    - name: Compare Commit Hash
+    - 名字: Compare Commit Hash
       id: cacheHash
       uses: actions/cache@v2
       with:
         path: .commitHash
         key: HEAD-${{ steps.getHash.outputs.commitHash }}
 
-    - name: Save New Commit Hash
+    - 名字: Save New Commit Hash
       if: steps.cacheHash.outputs.cache-hit != 'true'
       run: |
         echo ${{ steps.getHash.outputs.commitHash }} | tee .commitHash
 
-    - name: Trigger build
+    - 名字: Trigger build
       if: steps.cacheHash.outputs.cache-hit != 'true'
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
         event-type: Source Code Update
 
-    - name: Delete workflow runs
+    - 名字: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1

@@ -18,3 +18,6 @@ sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+
+# 修改feeds以解决在 Ubuntu 22.04 上出现的报错问题
+patch -p0 < files/feeds_patch.patch

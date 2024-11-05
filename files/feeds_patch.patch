@@ -1,0 +1,11 @@
+--- ./scripts/feeds	2024-11-06 00:01:38.450309500 +0800
++++ ./scripts/feeds2	2024-11-06 00:08:28.261115100 +0800
+@@ -832,7 +832,7 @@
+ 	}
+         
+         if ($failed == 0) {
+-		system(`sed -i -e 's/"^rausb%d", "^rai%d", "^ra%d", "^wdsi%d", "^wds%d", "^apclii%d", "^apcli%d", "^apcliusb%d", //' feeds/luci/modules/luci-base/luasrc/model/network.lua`);
++		system("sed -i -e \"s/\\\"^rausb[0-9]*\\\", \\\"^rai[0-9]*\\\", \\\"^ra[0-9]*\\\", \\\"^wdsi[0-9]*\\\", \\\"^wds[0-9]*\\\", \\\"^apclii[0-9]*\\\", \\\"^apcli[0-9]*\\\", \\\"^apcliusb[0-9]*\\\", \\\"//g\" feeds/luci/modules/luci-base/luasrc/model/network.lua");
+ 	}
+ 	refresh_config();
+ 

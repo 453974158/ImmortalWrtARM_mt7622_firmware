@@ -19,4 +19,7 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 修改feeds以解决在 Ubuntu 22.04 上出现的报错问题
-# patch -p0 < files/feeds_patch.patch
+patch -p0 < files/feeds_patch.patch
+
+# 修改target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch尝试修复ERROR: target/linux failed to build
+patch -p0 < files/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch.diff 

@@ -1,0 +1,39 @@
+--- target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch	2024-11-06 21:41:27.821799100 +0800
++++ target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM2.patch	2024-11-06 21:45:05.284307800 +0800
+@@ -8,36 +8,6 @@
+ Signed-off-by: Felix Fietkau <nbd@nbd.name>
+ ---
+ 
+---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+-@@ -364,7 +364,7 @@
+- 		};
+- 
+- 		cci_control2: slave-if@5000 {
+--			compatible = "arm,cci-400-ctrl-if";
+-+			compatible = "arm,cci-400-ctrl-if", "syscon";
+- 			interface-type = "ace";
+- 			reg = <0x5000 0x1000>;
+- 		};
+-@@ -977,6 +977,8 @@
+- 		power-domains = <&scpsys MT7622_POWER_DOMAIN_ETHSYS>;
+- 		mediatek,ethsys = <&ethsys>;
+- 		mediatek,sgmiisys = <&sgmiisys>;
+-+		mediatek,cci-control = <&cci_control2>;
+-+		dma-coherent;
+- 		#address-cells = <1>;
+- 		#size-cells = <0>;
+- 		status = "disabled";
+---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+-@@ -9,6 +9,7 @@
+- #include <linux/of_device.h>
+- #include <linux/of_mdio.h>
+- #include <linux/of_net.h>
+-+#include <linux/of_address.h>
+- #include <linux/mfd/syscon.h>
+- #include <linux/regmap.h>
+- #include <linux/clk.h>
+ @@ -2494,6 +2495,13 @@ static int mtk_hw_init(struct mtk_eth *e
+  	if (ret)
+  		goto err_disable_pm;

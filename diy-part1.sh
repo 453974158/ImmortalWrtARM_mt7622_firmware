@@ -19,4 +19,4 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 修改feeds以解决在 Ubuntu 22.04 上出现的报错问题
-patch -p0 < files/feeds_patch.patch
+# patch -p0 < files/feeds_patch.patch

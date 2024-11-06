@@ -1,5 +1,5 @@
---- target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch	2024-11-06 21:41:27.821799100 +0800
-+++ target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM2.patch	2024-11-06 21:45:05.284307800 +0800
+--- ./target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch	2024-11-06 21:41:27.821799100 +0800
++++ ./target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM2.patch	2024-11-06 21:45:05.284307800 +0800
 @@ -8,36 +8,6 @@
  Signed-off-by: Felix Fietkau <nbd@nbd.name>
  ---

@@ -22,4 +22,4 @@
 patch -p0 < files/feeds_patch.patch
 
 # 修改target/linux/mediatek/patches-5.10/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch尝试修复ERROR: target/linux failed to build
-patch -p0 < files/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch.diff 
+patch --no-backup-if-mismatch -p0 < files/700-net-ethernet-mtk_eth_soc-add-support-for-coherent-DM.patch.diff 
